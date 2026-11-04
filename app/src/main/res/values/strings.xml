@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Employee Manager</string>
+    <string name="add_employee">Add Employee</string>
+    <string name="edit_employee">Edit Employee</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="no_employees">No Employees Found</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="address">Address</string>
+    <string name="designation">Designation</string>
+    <string name="salary">Salary</string>
+    <string name="employee_photo">Employee Photo</string>
+    <string name="add_employee_photo">Add or change employee photo</string>
+</resources>
