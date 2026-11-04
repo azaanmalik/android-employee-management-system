@@ -18,10 +18,6 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Configure Android SDK
-        uses: android-actions/setup-android@v3
-      - name: Install Android SDK Platform 34
-        run: sdkmanager 'platforms;android-34' 'build-tools;34.0.0'
       - name: Validate Android source is uploaded
         id: files
         shell: bash
@@ -32,6 +28,12 @@ jobs:
             echo 'source_present=false' >> "$GITHUB_OUTPUT"
             echo 'Initial repository scaffold detected: Android source upload is pending.'
           fi
+      - name: Install Android SDK Platform 34
+        if: steps.files.outputs.source_present == 'true'
+        shell: bash
+        run: |
+          echo "y" | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-34" "build-tools;34.0.0"
       - name: Build debug APK and run unit tests
         if: steps.files.outputs.source_present == 'true'
         run: |
